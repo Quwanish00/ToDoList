@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+        android:layout_margin="6dp"
+    app:cardCornerRadius="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#D8283593"
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+            android:hint="name"
+            android:textColorHint="#FFFFFF"
+            android:id="@+id/add_item"
+            app:layout_constraintBottom_toTopOf="@id/add_date"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
+        <EditText
+
+            android:hint="date"
+            android:textColorHint="#FFFFFF"
+            android:id="@+id/add_date"
+            app:layout_constraintBottom_toTopOf="@id/save"
+            app:layout_constraintTop_toBottomOf="@id/add_item"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save"
+            app:layout_constraintTop_toBottomOf="@id/add_date"
+            android:layout_width="200dp"
+            android:backgroundTint="#72FFFFFF"
+            android:text="save"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_marginTop="12dp"
+
+            app:layout_constraintStart_toStartOf="@id/add_item"
+            app:layout_constraintEnd_toEndOf="@id/add_item"
+            android:layout_height="50dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="12dp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    app:strokeWidth="1.5dp"
+    app:strokeColor="#01579B"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#004D40"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="250dp"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:letterSpacing="0.05"
+            android:text="Vinogradobanana"
+            android:layout_height="35dp"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:letterSpacing="0.05"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@id/name"
+            android:text="Yesterday"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
+
+<ImageView
+    android:elevation="1dp"
+    android:layout_width="35dp"
+    android:layout_height="35dp"
+    android:layout_marginEnd="36dp"
+    android:src="@drawable/update"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/name"
+    app:layout_constraintBottom_toBottomOf="@id/date"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>
