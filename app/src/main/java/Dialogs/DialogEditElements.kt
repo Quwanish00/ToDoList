@@ -47,8 +47,8 @@ class DialogEditElements :DialogFragment(R.layout.dialog_edit_elements) {
 
                     )
                     dao.updateElement(elements)
-//
-                    aDapter.elements =dao.getElementsByID(i_d).toMutableList()
+                    onAddSuccess.invoke(i_d)
+
                     dismiss()
                 } else {
                     Toast.makeText(requireContext(), "Fill the fields!", Toast.LENGTH_SHORT).show()
@@ -57,5 +57,9 @@ class DialogEditElements :DialogFragment(R.layout.dialog_edit_elements) {
             }
         }
 
+    }
+    private var onAddSuccess: (id:Int) -> Unit = {}
+    fun setOnEditElementsListener(onAddSuccess: (id:Int) -> Unit) {
+        this.onAddSuccess = onAddSuccess
     }
 }

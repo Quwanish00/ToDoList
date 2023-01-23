@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_margin="6dp"
     app:cardCornerRadius="12dp"
@@ -16,7 +17,7 @@
 
         <TextView
             android:id="@+id/name"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/check"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="250dp"
 
@@ -39,6 +40,7 @@
             app:layout_constraintTop_toBottomOf="@id/name"/>
 
 <ImageView
+    android:id="@+id/edit_element"
     android:elevation="1dp"
     android:layout_width="35dp"
     android:layout_height="35dp"
@@ -47,6 +49,14 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="@id/name"
     app:layout_constraintBottom_toBottomOf="@id/date"/>
+
+        <CheckBox
+            android:id="@+id/check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

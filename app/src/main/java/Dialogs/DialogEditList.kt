@@ -8,18 +8,25 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.DialogAddListBinding
+import com.example.myapplication.databinding.DialogEditListBinding
 
-class DialogAddListt():DialogFragment(R.layout.dialog_add_list) {
-    private lateinit var binding: DialogAddListBinding
+class DialogEditList(id:Int,val name:String) :DialogFragment(R.layout.dialog_edit_list) {
+    private lateinit var binding: DialogEditListBinding
+    private val select =id
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = DialogAddListBinding.bind(view)
+
+
+        binding = DialogEditListBinding.bind(view)
+
+
 
         val dao = DatabaseLists.getInstance(requireContext()).getListDao()
 
         binding.apply {
-            addBtn.setOnClickListener {
+            editBtn.setOnClickListener {
+                etName.setText(name)
                 val name = etName.text.toString()
 
 
@@ -27,10 +34,10 @@ class DialogAddListt():DialogFragment(R.layout.dialog_add_list) {
 
 
                     val list = Lists(
-
+                        iD =select,
                         name = name,
                     )
-                    dao.addList(list)
+                    dao.updateLists(list)
                     onAddSuccess.invoke()
                     dismiss()
                 } else {
@@ -41,7 +48,7 @@ class DialogAddListt():DialogFragment(R.layout.dialog_add_list) {
     }
 
     private var onAddSuccess: () -> Unit = {}
-    fun setOnAddSuccessListener(onAddSuccess: () -> Unit) {
+    fun setOnEditClickListener(onAddSuccess: () -> Unit) {
         this.onAddSuccess = onAddSuccess
     }
-    }
+}

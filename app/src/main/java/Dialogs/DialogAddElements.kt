@@ -6,13 +6,15 @@ import EntityDao.ElementsDao
 import EntityDao.Lists
 import ToDoAdapters.ElementsAdapter
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.DialogAddElementsBinding
 
-class DialogAddElements:DialogFragment(R.layout.dialog_add_elements) {
+class DialogAddElements(private var iD:Int):DialogFragment(R.layout.dialog_add_elements) {
     private lateinit var dao : ElementsDao
     private lateinit var databaseLists: DatabaseLists
     private lateinit var binding: DialogAddElementsBinding
@@ -29,7 +31,7 @@ class DialogAddElements:DialogFragment(R.layout.dialog_add_elements) {
             save.setOnClickListener {
                 val name = addItem.text.toString()
                 val date = addDate.text.toString()
-                val id =arguments?.getInt("id")?:0
+
 
 
                 if (name.isNotEmpty()) {
@@ -38,12 +40,11 @@ class DialogAddElements:DialogFragment(R.layout.dialog_add_elements) {
                     val elements = Elements(
                         name = name,
                         date = date,
-                        topic_id = id
+                        topic_id = iD
 
                     )
                     dao.addElements(elements)
-//                    onAddSuccess.invoke()
-                    aDapter.elements =dao.getElementsByID(id).toMutableList()
+                     onAddSuccess.invoke()
                     dismiss()
                 } else {
                     Toast.makeText(requireContext(), "Fill the fields!", Toast.LENGTH_SHORT).show()
@@ -52,8 +53,11 @@ class DialogAddElements:DialogFragment(R.layout.dialog_add_elements) {
             }
         }
     }
-//    private var onAddSuccess: () -> Unit = {}
-//    fun setOnAddSuccessListener(onAddSuccess: () -> Unit) {
-//        this.onAddSuccess = onAddSuccess
-//    }
+    private var onAddSuccess: () -> Unit = {}
+
+    fun setOnAddSuccessListener(onAddSuccess: () -> Unit) {
+        this.onAddSuccess = onAddSuccess
+    }
+
+
 }

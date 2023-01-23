@@ -20,6 +20,17 @@ class ElementsAdapter:RecyclerView.Adapter<ElementsAdapter.ElementsViewHolder>()
             binding.apply {
                 name.text = elements.name
                 date.text = elements.date
+
+                check.setOnClickListener {
+                    onCheckBoxClick.invoke(elements,adapterPosition)
+                }
+
+                editElement.setOnClickListener {
+                    onItemClick.invoke(elements,adapterPosition)
+                }
+                binding.editElement.setOnClickListener {
+                    onEditClickListener.invoke(elements,adapterPosition)
+                }
             }
         }
     }
@@ -87,7 +98,16 @@ class ElementsAdapter:RecyclerView.Adapter<ElementsAdapter.ElementsViewHolder>()
     private var onDeleteClick: (elements: Elements, position: Int) -> Unit = { _, _ -> }
     fun setOnDeleteClickListener(cononDeleteClick: (elements: Elements, position: Int) -> Unit) {
         this.onDeleteClick = cononDeleteClick
-
-
     }
+
+        private var onCheckBoxClick: (elements: Elements, position: Int) -> Unit = { _, _ -> }
+        fun setOnCheckBoxClickListener(onCheckBoxClick: (elements: Elements, position: Int) -> Unit) {
+            this.onCheckBoxClick = onCheckBoxClick
+        }
+    private var onEditClickListener: (elements: Elements, position: Int) -> Unit = { _, _ -> }
+    fun setOnEditElementClickListener(onEditClickListener: (elements: Elements, position: Int) -> Unit) {
+        this.onDeleteClick = onEditClickListener
+    }
+
+
 }
